@@ -63,25 +63,26 @@
     footer{margin:28px 0 20px;color:#8a90a6;text-align:center;font-size:13px}
   </style>
 
-<style>
-/* Personal Statement block (light, minimal) */
-.section-statement{margin:48px auto;max-width:980px;padding:0 16px;}
-.section-statement h2{font-size:28px;margin:0 0 12px;color:#222;}
-.section-statement p.desc{color:#555;margin:0 0 16px;}
-.section-statement .cta{display:inline-block;font-size:14px;padding:8px 14px;border:1px solid #ccc;border-radius:999px;text-decoration:none;color:#333;background:#fff;transition:.2s}
-.section-statement .cta:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(-1px)}
-.section-statement .viewer{margin-top:18px;border:1px solid #eee;border-radius:12px;overflow:hidden}
-.section-statement iframe{width:100%;height:720px;border:0}
-@media (max-width:700px){
-  .section-statement iframe{height:520px}
-}
-</style>
+  <style>
+  /* Personal Statement block (light, minimal) */
+  .section-statement{margin:48px auto;max-width:980px;padding:0 16px;}
+  .section-statement h2{font-size:28px;margin:0 0 12px;color:#222;}
+  .section-statement p.desc{color:#555;margin:0 0 16px;}
+  .section-statement .cta{display:inline-block;font-size:14px;padding:8px 14px;border:1px solid #ccc;border-radius:999px;text-decoration:none;color:#333;background:#fff;transition:.2s}
+  .section-statement .cta:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(-1px)}
+  .section-statement .viewer{margin-top:18px;border:1px solid #eee;border-radius:12px;overflow:hidden}
+  .section-statement iframe{width:100%;height:720px;border:0}
+  @media (max-width:700px){
+    .section-statement iframe{height:520px}
+  }
+  </style>
 
 </head>
 <body>
   <div class="wrap">
     <header>
-      <img class="logo" src="assets/user_photo.png" alt="个人照片">
+      <!-- 改 1：头像路径 -->
+      <img class="logo" src="./user_photo.png" alt="个人照片">
       <div class="title">
         <h1>侯京呈｜保研佐证材料</h1>
         <div class="sub">河北大学 · 哲学与社会学学院 · 联系方式：15503161172</div>
@@ -93,7 +94,8 @@
   <div class="navband"><div class="nav">
     <a href="#materials">个人材料</a>
     <a href="#highlights">个人亮点</a>
-    <a href="#statement">个人陈述</a>
+    <!-- 改 4：锚点一致 -->
+    <a href="#personal-statement">个人陈述</a>
   </div></div>
 
   <div class="wrap">
@@ -101,7 +103,8 @@
       <aside class="card">
         <div class="body" style="display:flex;flex-direction:column;align-items:center">
           <h2 style="margin-bottom:20px;">下载材料</h2>
-          <a class="chipbtn primary" href="assets/evidence.pdf" download>下载 PDF</a>
+          <!-- 改 2：下载路径 -->
+          <a class="chipbtn primary" href="./evidence.pdf" download>下载 PDF</a>
         </div>
       </aside>
       <section class="card viewer">
@@ -163,7 +166,8 @@
   </div>
 
   <script>
-    const BASE = "assets/evidence.pdf#toolbar=1&navpanes=0&statusbar=0&zoom=page-width";
+    // 改 3：预览用相对路径（根目录文件）
+    const BASE = "./evidence.pdf#toolbar=1&navpanes=0&statusbar=0&zoom=page-width";
     const pdf = document.getElementById("pdf");
     function setPage(p){
       pdf.src = BASE + "&page=" + p;
@@ -175,14 +179,15 @@
     setPage(isNaN(page) ? 1 : page);
   </script>
 
-<section id="personal-statement" class="section-statement">
-  <h2>个人陈述</h2>
-  <p class="desc">下方可在线预览；如需提交材料，请下载 PDF 完整版。</p>
-  <a class="cta" href="./personal-statement.pdf" download>下载个人陈述 PDF</a>
-  <div class="viewer">
-    <iframe src="./personal-statement.pdf#view=FitH"></iframe>
-  </div>
-</section>
+  <!-- 个人陈述：此处链接已是 ./personal-statement.pdf，保持不变 -->
+  <section id="personal-statement" class="section-statement">
+    <h2>个人陈述</h2>
+    <p class="desc">下方可在线预览；如需提交材料，请下载 PDF 完整版。</p>
+    <a class="cta" href="./personal-statement.pdf" download>下载个人陈述 PDF</a>
+    <div class="viewer">
+      <iframe src="./personal-statement.pdf#view=FitH"></iframe>
+    </div>
+  </section>
 
 </body>
 </html>
