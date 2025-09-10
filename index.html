@@ -101,7 +101,7 @@
       <aside class="card">
         <div class="body" style="display:flex;flex-direction:column;align-items:center">
           <h2 style="margin-bottom:20px;">下载材料</h2>
-          <!-- 下载链接：改为 佐证材料侯京呈911.pdf -->
+          <!-- 下载链接：仍为 佐证材料侯京呈911.pdf -->
           <a class="chipbtn primary" href="./佐证材料侯京呈911.pdf" download>下载 PDF</a>
         </div>
       </aside>
@@ -181,11 +181,11 @@
     setPage(isNaN(page) ? 1 : page);
   </script>
 
-  <!-- 个人陈述（使用中文文件名，并用 encodeURI 确保兼容） -->
+  <!-- 个人陈述（此处改为 个人陈述侯京呈911.pdf，并用 encodeURI 确保兼容） -->
   <section id="personal-statement" class="section-statement">
     <h2>个人陈述</h2>
     <p class="desc">下方可在线预览；如需提交材料，请下载 PDF 完整版。</p>
-    <a class="cta" href="./个人陈述.pdf" download>下载个人陈述 PDF</a>
+    <a class="cta" href="./个人陈述侯京呈911.pdf" download>下载个人陈述 PDF</a>
     <div class="viewer">
       <iframe id="psFrame" title="个人陈述预览"></iframe>
     </div>
@@ -193,7 +193,7 @@
 
   <script>
     // 个人陈述 iframe 源（处理中文文件名）
-    const PS_PATH = "./个人陈述.pdf";
+    const PS_PATH = "./个人陈述侯京呈911.pdf";
     document.getElementById("psFrame").src = encodeURI(PS_PATH) + "#view=FitH";
   </script>
 
