@@ -81,7 +81,6 @@
 <body>
   <div class="wrap">
     <header>
-      <!-- 改 1：头像路径 -->
       <img class="logo" src="./user_photo.png" alt="个人照片">
       <div class="title">
         <h1>侯京呈｜保研佐证材料</h1>
@@ -94,7 +93,6 @@
   <div class="navband"><div class="nav">
     <a href="#materials">个人材料</a>
     <a href="#highlights">个人亮点</a>
-    <!-- 改 4：锚点一致 -->
     <a href="#personal-statement">个人陈述</a>
   </div></div>
 
@@ -103,7 +101,6 @@
       <aside class="card">
         <div class="body" style="display:flex;flex-direction:column;align-items:center">
           <h2 style="margin-bottom:20px;">下载材料</h2>
-          <!-- 改 2：下载路径 -->
           <a class="chipbtn primary" href="./evidence.pdf" download>下载 PDF</a>
         </div>
       </aside>
@@ -166,28 +163,33 @@
   </div>
 
   <script>
-    // 改 3：预览用相对路径（根目录文件）
+    // 在线预览：根目录文件
     const BASE = "./evidence.pdf#toolbar=1&navpanes=0&statusbar=0&zoom=page-width";
     const pdf = document.getElementById("pdf");
     function setPage(p){
       pdf.src = BASE + "&page=" + p;
       const u = new URL(window.location); u.searchParams.set('page', p); history.replaceState(null,'',u);
     }
-    // 初始化：若 URL 携带 ?page 参数则跳转
     const pageParam = new URL(window.location).searchParams.get('page');
     const page = pageParam ? parseInt(pageParam, 10) : 1;
     setPage(isNaN(page) ? 1 : page);
   </script>
 
-  <!-- 个人陈述：此处链接已是 ./个人陈述.pdf，保持不变 -->
+  <!-- 个人陈述（使用中文文件名，并用 encodeURI 确保兼容） -->
   <section id="personal-statement" class="section-statement">
     <h2>个人陈述</h2>
     <p class="desc">下方可在线预览；如需提交材料，请下载 PDF 完整版。</p>
-    <a class="cta" href="./personal-statement.pdf" download>下载个人陈述 PDF</a>
+    <a class="cta" href="./个人陈述.pdf" download>下载个人陈述 PDF</a>
     <div class="viewer">
-      <iframe src="./personal-statement.pdf#view=FitH"></iframe>
+      <iframe id="psFrame" title="个人陈述预览"></iframe>
     </div>
   </section>
+
+  <script>
+    // 个人陈述 iframe 源（处理中文文件名）
+    const PS_PATH = "./个人陈述.pdf";
+    document.getElementById("psFrame").src = encodeURI(PS_PATH) + "#view=FitH";
+  </script>
 
 </body>
 </html>
