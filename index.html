@@ -101,7 +101,8 @@
       <aside class="card">
         <div class="body" style="display:flex;flex-direction:column;align-items:center">
           <h2 style="margin-bottom:20px;">下载材料</h2>
-          <a class="chipbtn primary" href="./evidence.pdf" download>下载 PDF</a>
+          <!-- 下载链接换为中文文件名 -->
+          <a class="chipbtn primary" href="./佐证材料侯京呈910.pdf" download>下载 PDF</a>
         </div>
       </aside>
       <section class="card viewer">
@@ -163,13 +164,18 @@
   </div>
 
   <script>
-    // 在线预览：根目录文件
-    const BASE = "./evidence.pdf#toolbar=1&navpanes=0&statusbar=0&zoom=page-width";
+    // 在线预览：使用中文文件名，先把路径编码再拼接参数，防止 404
+    const DOC_PATH = "./佐证材料侯京呈910.pdf";
+    const DOC_OPTS = "#toolbar=1&navpanes=0&statusbar=0&zoom=page-width";
     const pdf = document.getElementById("pdf");
+
     function setPage(p){
-      pdf.src = BASE + "&page=" + p;
-      const u = new URL(window.location); u.searchParams.set('page', p); history.replaceState(null,'',u);
+      pdf.src = encodeURI(DOC_PATH) + DOC_OPTS + "&page=" + p;
+      const u = new URL(window.location);
+      u.searchParams.set('page', p);
+      history.replaceState(null,'',u);
     }
+
     const pageParam = new URL(window.location).searchParams.get('page');
     const page = pageParam ? parseInt(pageParam, 10) : 1;
     setPage(isNaN(page) ? 1 : page);
